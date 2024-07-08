@@ -19,7 +19,7 @@ namespace Hospital
         }
         public string Especialidad { get; set; }
 
-        public Medico(string nombre, string apellido, string dni, double sueldo, int anyoIncorporacion, string especialidad) : base(nombre, apellido, dni, sueldo, anyoIncorporacion)
+        public Medico(string nombre, string apellido, string dni, double sueldo, DateTime anyoIncorporacion, string especialidad) : base(nombre, apellido, dni, sueldo, anyoIncorporacion)
         {
             Especialidad = especialidad;
         }

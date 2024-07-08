@@ -18,7 +18,7 @@ namespace Hospital
     {
         public string Departamento { get; set; }
 
-        public Administrativo(string nombre, string apellido, string dni, double sueldo, int anyoIncorporacion, string departamento) : base(nombre, apellido, dni, sueldo, anyoIncorporacion)
+        public Administrativo(string nombre, string apellido, string dni, double sueldo, DateTime anyoIncorporacion, string departamento) : base(nombre, apellido, dni, sueldo, anyoIncorporacion)
         {
             Departamento = departamento;
         }

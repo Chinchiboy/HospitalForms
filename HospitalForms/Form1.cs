@@ -17,26 +17,26 @@ namespace HospitalForms
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
+        private void Form1_Load(object sender, EventArgs e){ }
 
         private void buttonMedico_Click(object sender, EventArgs e)
         {
             SetAllInvisible();
-            MostrarCamposMedico();
+            groupBoxMedico.Visible = true;
         }
 
         private void buttonAdmin_Click(object sender, EventArgs e)
         {
             SetAllInvisible();
-            MostrarCamposAdmin();
+            groupBoxAdmin.Location = new System.Drawing.Point(33, 276);
+            groupBoxAdmin.Visible = true;
         }
 
         private void buttonPaciente_Click(object sender, EventArgs e)
         {
             SetAllInvisible();
-            MostrarCamposPaciente();
+            groupBoxPaciente.Location = new System.Drawing.Point(33, 276);
+            groupBoxPaciente.Visible = true;
         }
 
         private void buttonVerMedico_Click(object sender, EventArgs e)
@@ -57,47 +57,53 @@ namespace HospitalForms
             DisplayPacientes();
         }
 
-        private void anadir_click(object sender, EventArgs e)
+        private void anadirMedico_click(object sender, EventArgs e)
         {
             if (CamposMedicoVisibles())
             {
                 if (ValidarMedico())
                 {
-                    var medico = new Medico(
+                    Medico m = new Medico(
                         nombre.Text,
                         apellido.Text,
                         dni.Text,
                         double.Parse(sueldo.Text),
-                        int.Parse(anyoIncorporacion.Text),
+                        DateTime.Parse(anyoIncorporacion.Text),
                         especialidad.SelectedItem.ToString()
                     );
-                    medicos.Add(medico);
+                    medicos.Add(m);
                     MessageBox.Show("Médico añadido exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarCampos();
                 }
             }
-            else if (CamposAdminVisibles())
+        }
+
+        private void anadirAdmin_click(object sender, EventArgs e)
+        {
+            if (CamposAdminVisibles())
             {
                 if (ValidarAdmin())
                 {
-                    var admin = new Administrativo(
+                    Administrativo a = new Administrativo(
                         nombre.Text,
                         apellido.Text,
                         dni.Text,
                         double.Parse(sueldo.Text),
-                        int.Parse(anyoIncorporacion.Text),
+                        DateTime.Parse(anyoIncorporacion.Text),
                         departamento.SelectedItem.ToString()
                     );
-                    administrativos.Add(admin);
+                    administrativos.Add(a);
                     MessageBox.Show("Administrativo añadido exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarCampos();
                 }
             }
-            else if (CamposPacienteVisibles())
+        }
+
+        private void anadirPaciente_click(object sender, EventArgs e)
+        {
+            if (CamposPacienteVisibles())
             {
                 if (ValidarPaciente())
                 {
-                    var paciente = new Paciente(
+                    Paciente paciente = new Paciente(
                         nombre.Text,
                         apellido.Text,
                         dni.Text,
@@ -109,24 +115,8 @@ namespace HospitalForms
                     );
                     pacientes.Add(paciente);
                     MessageBox.Show("Paciente añadido exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimpiarCampos();
                 }
             }
-        }
-
-        private void LimpiarCampos()
-        {
-            nombre.Text = "";
-            apellido.Text = "";
-            dni.Text = "";
-            sueldo.Text = "";
-            especialidad.ClearSelected();
-            anyoIncorporacion.Text = "";
-            dniMedico.Text = "";
-            planta.Text = "";
-            medicamentos.ClearSelected();
-            departamento.ClearSelected();
-            fechaAlta.Value = DateTime.Now;
         }
 
         private bool ValidarMedico()
@@ -176,119 +166,57 @@ namespace HospitalForms
 
         private void SetAllInvisible()
         {
-            label1.Visible = false;
-            nombre.Visible = false;
-            label2.Visible = false;
-            apellido.Visible = false;
-            label3.Visible = false;
-            dni.Visible = false;
-            label4.Visible = false;
-            sueldo.Visible = false;
-            label5.Visible = false;
-            anyoIncorporacion.Visible = false;
-            label6.Visible = false;
-            especialidad.Visible = false;
-            label12.Visible = false;
-            departamento.Visible = false;
-            planta.Visible = false;
-            label9.Visible = false;
-            fechaAlta.Visible = false;
-            label10.Visible = false;
-            dniMedico.Visible = false;
-            label8.Visible = false;
-            medicamentos.Visible = false;
-        }
-
-        private void MostrarCamposMedico()
-        {
-            label1.Visible = true;
-            nombre.Visible = true;
-            label2.Visible = true;
-            apellido.Visible = true;
-            label3.Visible = true;
-            dni.Visible = true;
-            label4.Visible = true;
-            sueldo.Visible = true;
-            label5.Visible = true;
-            anyoIncorporacion.Visible = true;
-            label6.Visible = true;
-            especialidad.Visible = true;
-        }
-
-        private void MostrarCamposAdmin()
-        {
-            label1.Visible = true;
-            nombre.Visible = true;
-            label2.Visible = true;
-            apellido.Visible = true;
-            label3.Visible = true;
-            dni.Visible = true;
-            label4.Visible = true;
-            sueldo.Visible = true;
-            label5.Visible = true;
-            anyoIncorporacion.Visible = true;
-            label12.Visible = true;
-            departamento.Visible = true;
-        }
-
-        private void MostrarCamposPaciente()
-        {
-            label1.Visible = true;
-            nombre.Visible = true;
-            label2.Visible = true;
-            apellido.Visible = true;
-            label3.Visible = true;
-            dni.Visible = true;
-            label7.Visible = true;
-            planta.Visible = true;
-            label9.Visible = true;
-            fechaAlta.Visible = true;
-            label10.Visible = true;
-            dniMedico.Visible = true;
-            label8.Visible = true;
-            medicamentos.Visible = true;
+            groupBoxMedico.Visible = false;
+            groupBoxAdmin.Visible = false;
+            groupBoxPaciente.Visible = false;
         }
 
         private bool CamposMedicoVisibles()
         {
-            return label1.Visible && label6.Visible;
+            return label1.Visible && label6.Visible && especialidad.Visible;
         }
 
         private bool CamposAdminVisibles()
         {
-            return label12.Visible;
+            return label12.Visible && departamento.Visible;
         }
 
         private bool CamposPacienteVisibles()
         {
-            return label7.Visible;
+            return label7.Visible && planta.Visible;
         }
 
         private void DisplayMedicos()
         {
-            textBox1.Clear();
-            foreach (var medico in medicos)
-            {
-                textBox1.AppendText(medico.ToString() + Environment.NewLine);
-            }
+            var displayText = string.Join("\n\n", medicos.Select(m => m.ToString()));
+            MessageBox.Show(displayText, "Lista de Médicos", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void DisplayAdministrativos()
         {
-            textBox1.Clear();
-            foreach (var admin in administrativos)
-            {
-                textBox1.AppendText(admin.ToString() + Environment.NewLine);
-            }
+            var displayText = string.Join("\n\n", administrativos.Select(a => a.ToString()));
+            MessageBox.Show(displayText, "Lista de Administrativos", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void DisplayPacientes()
         {
-            textBox1.Clear();
-            foreach (var paciente in pacientes)
-            {
-                textBox1.AppendText(paciente.ToString() + Environment.NewLine);
-            }
+            var displayText = string.Join("\n\n", pacientes.Select(p => p.ToString()));
+            MessageBox.Show(displayText, "Lista de Pacientes", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            // Lógica cuando cambia el texto en textBox1
+        }
+
+        private void departamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Lógica cuando se selecciona un nuevo departamento
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e){ }
+        private void label7_Click(object sender, EventArgs e){ }
+        private void label9_Click(object sender, EventArgs e){ }
+        private void groupBoxPaciente_Enter(object sender, EventArgs e){ }
     }
 }
