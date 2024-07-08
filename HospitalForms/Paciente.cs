@@ -39,7 +39,6 @@ namespace Hospital
             return $"Paciente: {Nombre} {Apellido}\n" +
                    $"DNI: {DNI}\n" +
                    $"Planta: {Planta}\n" +
-                   $"Alergias: {alergiasStr}\n" +
                    $"Medicamentos: {medicamentosStr}\n" +
                    $"Fecha de Ingreso: {FechaAlta.ToShortDateString()}";
         }

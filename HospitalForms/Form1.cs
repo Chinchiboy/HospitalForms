@@ -42,25 +42,29 @@ namespace HospitalForms
         private void buttonVerMedico_Click(object sender, EventArgs e)
         {
             SetAllInvisible();
-            DisplayMedicos();
+            var displayText = string.Join("\n\n", medicos.Select(m => m.ToString())); 
+            listBox1.Items.Clear();
+            listBox1.Items.Add(displayText);
         }
 
         private void buttonVerAdmin_Click(object sender, EventArgs e)
         {
             SetAllInvisible();
-            DisplayAdministrativos();
+            var displayText = string.Join("\n\n", administrativos.Select(a => a.ToString()));
+            listBox1.Items.Clear();
+            listBox1.Items.Add(displayText);
         }
 
         private void buttonVerPaciente_Click(object sender, EventArgs e)
         {
             SetAllInvisible();
-            DisplayPacientes();
+            var displayText = string.Join("\n\n", pacientes.Select(p => p.ToString()));
+            listBox1.Items.Clear();
+            listBox1.Items.Add(displayText);
         }
 
         private void anadirMedico_click(object sender, EventArgs e)
         {
-            if (CamposMedicoVisibles())
-            {
                 if (ValidarMedico())
                 {
                     Medico m = new Medico(
@@ -73,49 +77,69 @@ namespace HospitalForms
                     );
                     medicos.Add(m);
                     MessageBox.Show("Médico añadido exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LimpiarFormulario();
                 }
-            }
+            
         }
 
         private void anadirAdmin_click(object sender, EventArgs e)
         {
-            if (CamposAdminVisibles())
-            {
                 if (ValidarAdmin())
                 {
                     Administrativo a = new Administrativo(
-                        nombre.Text,
-                        apellido.Text,
-                        dni.Text,
-                        double.Parse(sueldo.Text),
-                        DateTime.Parse(anyoIncorporacion.Text),
+                        nombreAdmin.Text,
+                        apellidoAdmin.Text,
+                        dniAdmin.Text,
+                        double.Parse(sueldoAdmin.Text),
+                        DateTime.Parse(AnyoAdmin.Text),
                         departamento.SelectedItem.ToString()
                     );
                     administrativos.Add(a);
                     MessageBox.Show("Administrativo añadido exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    LimpiarFormulario();
                 }
-            }
+            
+        }
+
+        private void LimpiarFormulario()
+        {
+            nombre.Text = string.Empty;
+            nombreAdmin.Text = string.Empty;
+            nombrePaciente.Text = string.Empty;
+            apellido.Text = string.Empty;
+            apellidoAdmin.Text = string.Empty;
+            apellidoPaciente.Text = string.Empty;
+            dni.Text = string.Empty;
+            dniAdmin.Text = string.Empty;
+            dniPaciente.Text = string.Empty;
+            sueldo.Text = string.Empty;
+            sueldoAdmin.Text = string.Empty;
+            departamento.Text = string.Empty;
+            especialidad.Text = string.Empty;
+            planta.Text = string.Empty;
+            dniMedico.Text = string.Empty;
         }
 
         private void anadirPaciente_click(object sender, EventArgs e)
         {
-            if (CamposPacienteVisibles())
+            if (ValidarPaciente())
             {
-                if (ValidarPaciente())
-                {
-                    Paciente paciente = new Paciente(
-                        nombre.Text,
-                        apellido.Text,
-                        dni.Text,
-                        int.Parse(planta.Text),
-                        new List<string>(),
-                        medicamentos.SelectedItems.Cast<string>().ToList(),
-                        fechaAlta.Value,
-                        dniMedico.Text
-                    );
-                    pacientes.Add(paciente);
-                    MessageBox.Show("Paciente añadido exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
+                Paciente paciente = new Paciente(
+                    nombrePaciente.Text,
+                    apellidoPaciente.Text,
+                    dniPaciente.Text,
+                    int.Parse(planta.Text),
+                    new List<string>(),
+                    medicamentos.SelectedItems.Cast<string>().ToList(),
+                    fechaAlta.Value,
+                    dniMedico.Text
+                );
+                pacientes.Add(paciente);
+                MessageBox.Show("Paciente añadido exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                LimpiarFormulario();
             }
         }
 
@@ -136,12 +160,12 @@ namespace HospitalForms
 
         private bool ValidarAdmin()
         {
-            if (string.IsNullOrWhiteSpace(nombre.Text) ||
-                string.IsNullOrWhiteSpace(apellido.Text) ||
-                string.IsNullOrWhiteSpace(dni.Text) ||
-                string.IsNullOrWhiteSpace(sueldo.Text) ||
+            if (string.IsNullOrWhiteSpace(nombreAdmin.Text) ||
+                string.IsNullOrWhiteSpace(apellidoAdmin.Text) ||
+                string.IsNullOrWhiteSpace(dniAdmin.Text) ||
+                string.IsNullOrWhiteSpace(sueldoAdmin.Text) ||
                 departamento.SelectedItem == null ||
-                string.IsNullOrWhiteSpace(anyoIncorporacion.Text))
+                string.IsNullOrWhiteSpace(AnyoAdmin.Text))
             {
                 MessageBox.Show("Por favor, complete todos los campos necesarios para añadir un administrativo.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
@@ -151,15 +175,21 @@ namespace HospitalForms
 
         private bool ValidarPaciente()
         {
-            if (string.IsNullOrWhiteSpace(nombre.Text) ||
-                string.IsNullOrWhiteSpace(apellido.Text) ||
-                string.IsNullOrWhiteSpace(dni.Text) ||
-                string.IsNullOrWhiteSpace(planta.Text) ||
-                medicamentos.SelectedItems.Count == 0 ||
-                string.IsNullOrWhiteSpace(dniMedico.Text))
+            foreach (Medico m in medicos)
             {
-                MessageBox.Show("Por favor, complete todos los campos necesarios para añadir un paciente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
+                if(m.DNI == dniMedico.Text)
+                {
+                    if (string.IsNullOrWhiteSpace(nombrePaciente.Text) ||
+                        string.IsNullOrWhiteSpace(apellidoPaciente.Text) ||
+                        string.IsNullOrWhiteSpace(dniPaciente.Text) ||
+                        string.IsNullOrWhiteSpace(planta.Text) ||
+                        medicamentos.SelectedItems.Count == 0 ||
+                        string.IsNullOrWhiteSpace(dniMedico.Text))
+                    {
+                        MessageBox.Show("Por favor, complete todos los campos necesarios para añadir un paciente.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                }
             }
             return true;
         }
@@ -170,53 +200,5 @@ namespace HospitalForms
             groupBoxAdmin.Visible = false;
             groupBoxPaciente.Visible = false;
         }
-
-        private bool CamposMedicoVisibles()
-        {
-            return label1.Visible && label6.Visible && especialidad.Visible;
-        }
-
-        private bool CamposAdminVisibles()
-        {
-            return label12.Visible && departamento.Visible;
-        }
-
-        private bool CamposPacienteVisibles()
-        {
-            return label7.Visible && planta.Visible;
-        }
-
-        private void DisplayMedicos()
-        {
-            var displayText = string.Join("\n\n", medicos.Select(m => m.ToString()));
-            MessageBox.Show(displayText, "Lista de Médicos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void DisplayAdministrativos()
-        {
-            var displayText = string.Join("\n\n", administrativos.Select(a => a.ToString()));
-            MessageBox.Show(displayText, "Lista de Administrativos", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void DisplayPacientes()
-        {
-            var displayText = string.Join("\n\n", pacientes.Select(p => p.ToString()));
-            MessageBox.Show(displayText, "Lista de Pacientes", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-            // Lógica cuando cambia el texto en textBox1
-        }
-
-        private void departamento_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Lógica cuando se selecciona un nuevo departamento
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e){ }
-        private void label7_Click(object sender, EventArgs e){ }
-        private void label9_Click(object sender, EventArgs e){ }
-        private void groupBoxPaciente_Enter(object sender, EventArgs e){ }
     }
 }

@@ -63,22 +63,22 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.nombreAdmin = new System.Windows.Forms.TextBox();
+            this.sueldoAdmin = new System.Windows.Forms.TextBox();
+            this.dniAdmin = new System.Windows.Forms.TextBox();
+            this.apellidoAdmin = new System.Windows.Forms.TextBox();
+            this.AnyoAdmin = new System.Windows.Forms.DateTimePicker();
             this.groupBoxPaciente = new System.Windows.Forms.GroupBox();
             this.anadirPaciente = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox9 = new System.Windows.Forms.TextBox();
+            this.nombrePaciente = new System.Windows.Forms.TextBox();
+            this.dniPaciente = new System.Windows.Forms.TextBox();
+            this.apellidoPaciente = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.planta = new System.Windows.Forms.TextBox();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.listBox1 = new System.Windows.Forms.ListBox();
             this.groupBoxMedico.SuspendLayout();
             this.groupBoxAdmin.SuspendLayout();
             this.groupBoxPaciente.SuspendLayout();
@@ -203,35 +203,35 @@
             this.nombre.Location = new System.Drawing.Point(111, 18);
             this.nombre.Name = "nombre";
             this.nombre.Size = new System.Drawing.Size(100, 20);
-            this.nombre.TabIndex = 13;
+            this.nombre.TabIndex = 1;
             // 
             // dniMedico
             // 
             this.dniMedico.Location = new System.Drawing.Point(111, 165);
             this.dniMedico.Name = "dniMedico";
             this.dniMedico.Size = new System.Drawing.Size(100, 20);
-            this.dniMedico.TabIndex = 15;
+            this.dniMedico.TabIndex = 6;
             // 
             // sueldo
             // 
             this.sueldo.Location = new System.Drawing.Point(111, 96);
             this.sueldo.Name = "sueldo";
             this.sueldo.Size = new System.Drawing.Size(100, 20);
-            this.sueldo.TabIndex = 21;
+            this.sueldo.TabIndex = 4;
             // 
             // dni
             // 
             this.dni.Location = new System.Drawing.Point(111, 70);
             this.dni.Name = "dni";
             this.dni.Size = new System.Drawing.Size(100, 20);
-            this.dni.TabIndex = 22;
+            this.dni.TabIndex = 3;
             // 
             // apellido
             // 
             this.apellido.Location = new System.Drawing.Point(111, 44);
             this.apellido.Name = "apellido";
             this.apellido.Size = new System.Drawing.Size(100, 20);
-            this.apellido.TabIndex = 23;
+            this.apellido.TabIndex = 2;
             // 
             // anyoIncorporacion
             // 
@@ -239,7 +239,7 @@
             this.anyoIncorporacion.Name = "anyoIncorporacion";
             this.anyoIncorporacion.ShowCheckBox = true;
             this.anyoIncorporacion.Size = new System.Drawing.Size(230, 20);
-            this.anyoIncorporacion.TabIndex = 24;
+            this.anyoIncorporacion.TabIndex = 5;
             // 
             // label8
             // 
@@ -265,7 +265,7 @@
             this.medicamentos.Name = "medicamentos";
             this.medicamentos.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.medicamentos.Size = new System.Drawing.Size(120, 95);
-            this.medicamentos.TabIndex = 27;
+            this.medicamentos.TabIndex = 7;
             // 
             // label9
             // 
@@ -275,7 +275,6 @@
             this.label9.TabIndex = 28;
             this.label9.Text = "Fecha de alta";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // fechaAlta
             // 
@@ -283,7 +282,7 @@
             this.fechaAlta.Name = "fechaAlta";
             this.fechaAlta.ShowCheckBox = true;
             this.fechaAlta.Size = new System.Drawing.Size(239, 20);
-            this.fechaAlta.TabIndex = 29;
+            this.fechaAlta.TabIndex = 5;
             // 
             // label10
             // 
@@ -306,7 +305,7 @@
             this.especialidad.Location = new System.Drawing.Point(111, 170);
             this.especialidad.Name = "especialidad";
             this.especialidad.Size = new System.Drawing.Size(120, 95);
-            this.especialidad.TabIndex = 32;
+            this.especialidad.TabIndex = 6;
             // 
             // departamento
             // 
@@ -319,8 +318,7 @@
             this.departamento.Location = new System.Drawing.Point(91, 170);
             this.departamento.Name = "departamento";
             this.departamento.Size = new System.Drawing.Size(120, 95);
-            this.departamento.TabIndex = 34;
-            this.departamento.SelectedIndexChanged += new System.EventHandler(this.departamento_SelectedIndexChanged);
+            this.departamento.TabIndex = 6;
             // 
             // label12
             // 
@@ -336,7 +334,7 @@
             this.anadirMedico.Location = new System.Drawing.Point(289, 230);
             this.anadirMedico.Name = "anadirMedico";
             this.anadirMedico.Size = new System.Drawing.Size(87, 35);
-            this.anadirMedico.TabIndex = 35;
+            this.anadirMedico.TabIndex = 7;
             this.anadirMedico.Text = "Añadir";
             this.anadirMedico.UseVisualStyleBackColor = true;
             this.anadirMedico.Click += new System.EventHandler(this.anadirMedico_click);
@@ -363,7 +361,6 @@
             this.groupBoxMedico.TabStop = false;
             this.groupBoxMedico.Text = "Añadir Médico";
             this.groupBoxMedico.Visible = false;
-            this.groupBoxMedico.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBoxAdmin
             // 
@@ -375,11 +372,11 @@
             this.groupBoxAdmin.Controls.Add(this.label12);
             this.groupBoxAdmin.Controls.Add(this.label15);
             this.groupBoxAdmin.Controls.Add(this.label16);
-            this.groupBoxAdmin.Controls.Add(this.textBox2);
-            this.groupBoxAdmin.Controls.Add(this.textBox3);
-            this.groupBoxAdmin.Controls.Add(this.textBox4);
-            this.groupBoxAdmin.Controls.Add(this.textBox5);
-            this.groupBoxAdmin.Controls.Add(this.dateTimePicker1);
+            this.groupBoxAdmin.Controls.Add(this.nombreAdmin);
+            this.groupBoxAdmin.Controls.Add(this.sueldoAdmin);
+            this.groupBoxAdmin.Controls.Add(this.dniAdmin);
+            this.groupBoxAdmin.Controls.Add(this.apellidoAdmin);
+            this.groupBoxAdmin.Controls.Add(this.AnyoAdmin);
             this.groupBoxAdmin.Location = new System.Drawing.Point(33, 582);
             this.groupBoxAdmin.Name = "groupBoxAdmin";
             this.groupBoxAdmin.Size = new System.Drawing.Size(382, 279);
@@ -443,41 +440,41 @@
             this.label16.Text = "Año de incorporación";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox2
+            // nombreAdmin
             // 
-            this.textBox2.Location = new System.Drawing.Point(111, 18);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 13;
+            this.nombreAdmin.Location = new System.Drawing.Point(111, 18);
+            this.nombreAdmin.Name = "nombreAdmin";
+            this.nombreAdmin.Size = new System.Drawing.Size(100, 20);
+            this.nombreAdmin.TabIndex = 1;
             // 
-            // textBox3
+            // sueldoAdmin
             // 
-            this.textBox3.Location = new System.Drawing.Point(111, 96);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 21;
+            this.sueldoAdmin.Location = new System.Drawing.Point(111, 96);
+            this.sueldoAdmin.Name = "sueldoAdmin";
+            this.sueldoAdmin.Size = new System.Drawing.Size(100, 20);
+            this.sueldoAdmin.TabIndex = 4;
             // 
-            // textBox4
+            // dniAdmin
             // 
-            this.textBox4.Location = new System.Drawing.Point(111, 70);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 22;
+            this.dniAdmin.Location = new System.Drawing.Point(111, 70);
+            this.dniAdmin.Name = "dniAdmin";
+            this.dniAdmin.Size = new System.Drawing.Size(100, 20);
+            this.dniAdmin.TabIndex = 3;
             // 
-            // textBox5
+            // apellidoAdmin
             // 
-            this.textBox5.Location = new System.Drawing.Point(111, 44);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 23;
+            this.apellidoAdmin.Location = new System.Drawing.Point(111, 44);
+            this.apellidoAdmin.Name = "apellidoAdmin";
+            this.apellidoAdmin.Size = new System.Drawing.Size(100, 20);
+            this.apellidoAdmin.TabIndex = 2;
             // 
-            // dateTimePicker1
+            // AnyoAdmin
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(111, 135);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.ShowCheckBox = true;
-            this.dateTimePicker1.Size = new System.Drawing.Size(230, 20);
-            this.dateTimePicker1.TabIndex = 24;
+            this.AnyoAdmin.Location = new System.Drawing.Point(111, 135);
+            this.AnyoAdmin.Name = "AnyoAdmin";
+            this.AnyoAdmin.ShowCheckBox = true;
+            this.AnyoAdmin.Size = new System.Drawing.Size(230, 20);
+            this.AnyoAdmin.TabIndex = 5;
             // 
             // groupBoxPaciente
             // 
@@ -488,11 +485,11 @@
             this.groupBoxPaciente.Controls.Add(this.medicamentos);
             this.groupBoxPaciente.Controls.Add(this.label8);
             this.groupBoxPaciente.Controls.Add(this.label10);
-            this.groupBoxPaciente.Controls.Add(this.textBox6);
+            this.groupBoxPaciente.Controls.Add(this.nombrePaciente);
             this.groupBoxPaciente.Controls.Add(this.fechaAlta);
             this.groupBoxPaciente.Controls.Add(this.label9);
-            this.groupBoxPaciente.Controls.Add(this.textBox8);
-            this.groupBoxPaciente.Controls.Add(this.textBox9);
+            this.groupBoxPaciente.Controls.Add(this.dniPaciente);
+            this.groupBoxPaciente.Controls.Add(this.apellidoPaciente);
             this.groupBoxPaciente.Controls.Add(this.label7);
             this.groupBoxPaciente.Controls.Add(this.planta);
             this.groupBoxPaciente.Controls.Add(this.dniMedico);
@@ -503,7 +500,6 @@
             this.groupBoxPaciente.TabStop = false;
             this.groupBoxPaciente.Text = "Añadir Paciente";
             this.groupBoxPaciente.Visible = false;
-            this.groupBoxPaciente.Enter += new System.EventHandler(this.groupBoxPaciente_Enter);
             // 
             // anadirPaciente
             // 
@@ -542,26 +538,26 @@
             this.label19.Text = "DNI";
             this.label19.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // textBox6
+            // nombrePaciente
             // 
-            this.textBox6.Location = new System.Drawing.Point(111, 18);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 13;
+            this.nombrePaciente.Location = new System.Drawing.Point(111, 18);
+            this.nombrePaciente.Name = "nombrePaciente";
+            this.nombrePaciente.Size = new System.Drawing.Size(100, 20);
+            this.nombrePaciente.TabIndex = 1;
             // 
-            // textBox8
+            // dniPaciente
             // 
-            this.textBox8.Location = new System.Drawing.Point(111, 70);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 22;
+            this.dniPaciente.Location = new System.Drawing.Point(111, 70);
+            this.dniPaciente.Name = "dniPaciente";
+            this.dniPaciente.Size = new System.Drawing.Size(100, 20);
+            this.dniPaciente.TabIndex = 3;
             // 
-            // textBox9
+            // apellidoPaciente
             // 
-            this.textBox9.Location = new System.Drawing.Point(111, 44);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 23;
+            this.apellidoPaciente.Location = new System.Drawing.Point(111, 44);
+            this.apellidoPaciente.Name = "apellidoPaciente";
+            this.apellidoPaciente.Size = new System.Drawing.Size(100, 20);
+            this.apellidoPaciente.TabIndex = 2;
             // 
             // label7
             // 
@@ -571,30 +567,28 @@
             this.label7.TabIndex = 25;
             this.label7.Text = "Planta";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
             // planta
             // 
             this.planta.Location = new System.Drawing.Point(111, 100);
             this.planta.Name = "planta";
             this.planta.Size = new System.Drawing.Size(100, 20);
-            this.planta.TabIndex = 18;
+            this.planta.TabIndex = 4;
             // 
-            // listView1
+            // listBox1
             // 
-            this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(144, 12);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(618, 243);
-            this.listView1.TabIndex = 40;
-            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(144, 12);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(768, 251);
+            this.listBox1.TabIndex = 38;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(805, 564);
-            this.Controls.Add(this.listView1);
+            this.ClientSize = new System.Drawing.Size(1133, 878);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.groupBoxPaciente);
             this.Controls.Add(this.groupBoxAdmin);
             this.Controls.Add(this.groupBoxMedico);
@@ -653,23 +647,23 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox nombreAdmin;
+        private System.Windows.Forms.TextBox sueldoAdmin;
+        private System.Windows.Forms.TextBox dniAdmin;
+        private System.Windows.Forms.TextBox apellidoAdmin;
+        private System.Windows.Forms.DateTimePicker AnyoAdmin;
         private System.Windows.Forms.GroupBox groupBoxPaciente;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox9;
+        private System.Windows.Forms.TextBox nombrePaciente;
+        private System.Windows.Forms.TextBox dniPaciente;
+        private System.Windows.Forms.TextBox apellidoPaciente;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox planta;
         private System.Windows.Forms.Button anadirAdmin;
         private System.Windows.Forms.Button anadirPaciente;
-        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ListBox listBox1;
     }
 }
 
