@@ -42,26 +42,51 @@ namespace HospitalForms
         private void buttonVerMedico_Click(object sender, EventArgs e)
         {
             SetAllInvisible();
-            var displayText = string.Join("\n\n", medicos.Select(m => m.ToString())); 
             listBox1.Items.Clear();
-            listBox1.Items.Add(displayText);
+
+            // Agregar encabezado
+            listBox1.Items.Add("MOSTRANDO MÉDICOS");
+            listBox1.Items.Add("");  // Línea vacía para separar el encabezado de la lista
+
+            // Agregar elementos
+            foreach (var medico in medicos)
+            {
+                listBox1.Items.Add(medico.ToString());
+            }
         }
 
         private void buttonVerAdmin_Click(object sender, EventArgs e)
         {
             SetAllInvisible();
-            var displayText = string.Join("\n\n", administrativos.Select(a => a.ToString()));
             listBox1.Items.Clear();
-            listBox1.Items.Add(displayText);
+
+            // Agregar encabezado
+            listBox1.Items.Add("MOSTRANDO ADMINISTRATIVOS");
+            listBox1.Items.Add("");  // Línea vacía para separar el encabezado de la lista
+
+            // Agregar elementos
+            foreach (var admin in administrativos)
+            {
+                listBox1.Items.Add(admin.ToString());
+            }
         }
 
         private void buttonVerPaciente_Click(object sender, EventArgs e)
         {
             SetAllInvisible();
-            var displayText = string.Join("\n\n", pacientes.Select(p => p.ToString()));
             listBox1.Items.Clear();
-            listBox1.Items.Add(displayText);
+
+            // Agregar encabezado
+            listBox1.Items.Add("MOSTRANDO PACIENTES");
+            listBox1.Items.Add("");  // Línea vacía para separar el encabezado de la lista
+
+            // Agregar elementos
+            foreach (var paciente in pacientes)
+            {
+                listBox1.Items.Add(paciente.ToString());
+            }
         }
+
 
         private void anadirMedico_click(object sender, EventArgs e)
         {
@@ -199,6 +224,24 @@ namespace HospitalForms
             groupBoxMedico.Visible = false;
             groupBoxAdmin.Visible = false;
             groupBoxPaciente.Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Si hay algún elemento seleccionado, hacer visible el botón Eliminar
+            if (listBox1.SelectedIndex >= 0)
+            {
+                eliminar.Visible = true;
+            }
+            else
+            {
+                eliminar.Visible = false;
+            }
         }
     }
 }
